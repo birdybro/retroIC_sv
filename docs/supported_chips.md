@@ -13,23 +13,23 @@ from the physical part.
 | Chip | Category | Status | Original function | FPGA modeling approach | Notes / caveats |
 |---|---|---|---|---|---|
 | 2708 | ROM/EPROM | planned | 1K×8 EPROM (1Kx8, multi-rail) | generic async ROM wrapper, 10-bit addr | Real part needs −5/+12 V rails and has 3 chip-selects; we model the single logical `ce_n`/`oe_n` read path only. |
-| 2716 | ROM/EPROM | planned | 2K×8 EPROM | generic async ROM, 11-bit addr, `ce_n`+`oe_n` | Single +5 V 2716 assumed. No programming model. |
-| 2732 | ROM/EPROM | planned | 4K×8 EPROM | generic async ROM, 12-bit addr | `oe_n`/`ce_n` combined on real `OE/Vpp` pin; modeled as separate `oe_n`. |
-| 2764 | ROM/EPROM | planned | 8K×8 EPROM | generic async ROM, 13-bit addr | Has `ce_n` + `oe_n` + `pgm_n`; we model read path. |
+| 2716 | ROM/EPROM | basic | 2K×8 EPROM | generic async ROM, 11-bit addr, `ce_n`+`oe_n` | Single +5 V 2716 assumed. No programming model. |
+| 2732 | ROM/EPROM | basic | 4K×8 EPROM | generic async ROM, 12-bit addr | `oe_n`/`ce_n` combined on real `OE/Vpp` pin; modeled as separate `oe_n`. |
+| 2764 | ROM/EPROM | basic | 8K×8 EPROM | generic async ROM, 13-bit addr | Has `ce_n` + `oe_n` + `pgm_n`; we model read path. |
 | 27128 | ROM/EPROM | planned | 16K×8 EPROM | generic async ROM, 14-bit addr | As 2764. |
 | 27256 | ROM/EPROM | planned | 32K×8 EPROM | generic async ROM, 15-bit addr | As 2764. |
 | 27512 | ROM/EPROM | planned | 64K×8 EPROM | generic async ROM, 16-bit addr | `oe_n`/Vpp shared on real part; modeled as `oe_n`. |
-| generic_async_rom | ROM/EPROM | planned | parameterized ROM | params: ADDR_WIDTH, DATA_WIDTH, INIT_FILE, REGISTER_OUTPUT | Base for all EPROM wrappers; `$readmemh` init. See [memory_models.md](memory_models.md). |
+| generic_async_rom | ROM/EPROM | basic | parameterized ROM | params: ADDR_WIDTH, DATA_WIDTH, INIT_FILE, REGISTER_OUTPUT | Base for all EPROM wrappers; `$readmemh` init. See [memory_models.md](memory_models.md). |
 
 ## Static RAM
 
 | Chip | Category | Status | Original function | FPGA modeling approach | Notes / caveats |
 |---|---|---|---|---|---|
 | 2114 | SRAM | planned | 1K×4 SRAM | generic SRAM, 10-bit addr, 4-bit data | Nibble-wide; common-I/O data pins → `din`/`dout`/`dout_oe`. |
-| 6116 | SRAM | planned | 2K×8 SRAM | generic SRAM, 11-bit addr, 8-bit data | `ce_n`+`oe_n`+`we_n`. |
-| 6264 | SRAM | planned | 8K×8 SRAM | generic SRAM, 13-bit addr, 8-bit data | Two chip selects (`cs1_n`, `cs2`) on real part; modeled as combined enable. |
+| 6116 | SRAM | basic | 2K×8 SRAM | generic SRAM, 11-bit addr, 8-bit data | `ce_n`+`oe_n`+`we_n`. |
+| 6264 | SRAM | basic | 8K×8 SRAM | generic SRAM, 13-bit addr, 8-bit data | Two chip selects (`cs1_n`, `cs2`) on real part; modeled as combined enable. |
 | 62256 | SRAM | planned | 32K×8 SRAM | generic SRAM, 15-bit addr, 8-bit data | As 6116/6264. |
-| generic_sram | SRAM | planned | parameterized SRAM | params: ADDR_WIDTH, DATA_WIDTH, byte enable, sync write, async/sync read | `dout_oe` instead of tri-state. Async read = distributed/LUT RAM on FPGA; sync read = M10K. See [memory_models.md](memory_models.md). |
+| generic_sram | SRAM | basic | parameterized SRAM | params: ADDR_WIDTH, DATA_WIDTH, byte enable, sync write, async/sync read | `dout_oe` instead of tri-state. Async read = distributed/LUT RAM on FPGA; sync read = M10K. See [memory_models.md](memory_models.md). |
 
 ## 4000/4500-series CMOS logic
 

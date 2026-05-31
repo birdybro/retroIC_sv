@@ -22,23 +22,23 @@ meaningful change.
 
 ## Stage 1 — Common package + helpers (commit 2)
 
-- [ ] `rtl/common/retro_ic_pkg.sv` — shared types/params/functions
-- [ ] `rtl/common/edge_detector.sv` — rising/falling edge pulse helper
-- [ ] `rtl/common/synchronizer.sv` — 2FF input synchronizer
-- [ ] Helper testbenches
+- [x] `rtl/common/retro_ic_pkg.sv` — shared types/params/functions
+- [x] `rtl/common/edge_detector.sv` — rising/falling edge pulse helper
+- [x] `rtl/common/synchronizer.sv` — 2FF input synchronizer
+- [ ] Helper testbenches (sim/common)
 
 ## Stage 2 — Memory wrappers (commit 2)
 
-- [ ] `rtl/memory/generic_async_rom.sv` (ADDR_WIDTH, DATA_WIDTH, INIT_FILE,
+- [x] `rtl/memory/generic_async_rom.sv` (ADDR_WIDTH, DATA_WIDTH, INIT_FILE,
       REGISTER_OUTPUT)
-- [ ] `rtl/memory/generic_sram.sv` (ADDR_WIDTH, DATA_WIDTH, byte enable,
+- [x] `rtl/memory/generic_sram.sv` (ADDR_WIDTH, DATA_WIDTH, byte enable,
       sync write, async/sync read mode)
-- [ ] `rtl/memory/eprom_2716.sv`
-- [ ] `rtl/memory/eprom_2732.sv`
-- [ ] `rtl/memory/eprom_2764.sv`
-- [ ] `rtl/memory/sram_6116.sv`
-- [ ] `rtl/memory/sram_6264.sv`
-- [ ] Self-checking testbenches for each + run scripts
+- [x] `rtl/memory/eprom_2716.sv`
+- [x] `rtl/memory/eprom_2732.sv`
+- [x] `rtl/memory/eprom_2764.sv`
+- [x] `rtl/memory/sram_6116.sv`
+- [x] `rtl/memory/sram_6264.sv`
+- [x] Self-checking testbenches for each + run scripts
 - [ ] Remaining EPROM wrappers: 2708, 27128, 27256, 27512
 - [ ] Remaining SRAM wrappers: 2114, 62256
 
