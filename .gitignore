@@ -1,0 +1,14 @@
+# Verilator / simulation build artifacts
+obj_dir/
+*.vcd
+*.fst
+*.o
+*.d
+*.out
+sim_build/
+*.log
+
+# Editor / OS
+*.swp
+*~
+.DS_Store
