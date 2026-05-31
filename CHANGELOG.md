@@ -7,6 +7,12 @@ pre-1.0; the public module interfaces may still change.
 ## [Unreleased]
 
 ### Added
+- **CMOS 4000-series models**: `cd4013` (dual D flip-flop), `cd4040` (12-stage
+  counter), `cd4520` (dual 4-bit counter) using FPGA-safe synchronous logic
+  with the chip clock edge-detected against the system clock; `cd4051` (8:1
+  mux / 1:8 demux) and `cd4066` (quad bilateral switch) as combinational
+  digital models of the analog switches (no analog behavior). Self-checking
+  testbenches for all five pass under Verilator 5.x.
 - **Common package + helpers**: `rtl/common/retro_ic_pkg.sv` (library
   constants + sizing helper), `synchronizer.sv` (N-stage CDC), and
   `edge_detector.sv` (rising/falling pulse).

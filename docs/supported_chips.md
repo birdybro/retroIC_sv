@@ -35,16 +35,16 @@ from the physical part.
 
 | Chip | Category | Status | Original function | FPGA modeling approach | Notes / caveats |
 |---|---|---|---|---|---|
-| CD4013 | CMOS4000 | planned | dual D flip-flop w/ set/reset | two clocked D-FFs, sync clock-enable on real edge | Async `set`/`reset` modeled; real part is level (not edge) on S/R. |
+| CD4013 | CMOS4000 | basic | dual D flip-flop w/ set/reset | two clocked D-FFs, chip clock edge-detected against system clock | Async `set`/`reset` modeled synchronously; both-high → both outputs high. |
 | CD4020 | CMOS4000 | planned | 14-stage ripple counter | sync counter + clock enable; optional ripple reference | Ripple delays not modeled in sync form; see [coding_style](coding_style.md). |
-| CD4040 | CMOS4000 | planned | 12-stage ripple counter | sync counter + clock enable; optional ripple reference | Q0..Q11 exposed; clears on `reset`. |
-| CD4051 | CMOS4000 | planned | 8:1 analog mux/demux | **digital** 8:1 mux + 1:8 demux with `inhibit` | No analog resistance/bidirectional analog; digital direction selected by use. |
+| CD4040 | CMOS4000 | basic | 12-stage ripple counter | sync counter, falling-edge count enable | Q1..Q12 = q[0..11]; clears on `master_reset`. All bits update together (no ripple skew). |
+| CD4051 | CMOS4000 | basic | 8:1 analog mux/demux | **digital** 8:1 mux + 1:8 demux with `inhibit` | No analog resistance/bidirectional analog; mux + demux paths exposed separately. |
 | CD4052 | CMOS4000 | planned | dual 4:1 analog mux/demux | **digital** dual 4:1 mux | Digital model only. |
 | CD4053 | CMOS4000 | planned | triple 2:1 analog mux/demux | **digital** triple 2:1 mux | Digital model only. |
-| CD4066 | CMOS4000 | planned | quad bilateral switch | **digital** quad switch as enable/mux (`a`→`y` when `ctrl`) | No analog Ron, no true bidirectional analog. Models pass/block. |
+| CD4066 | CMOS4000 | basic | quad bilateral switch | **digital** quad switch as enable/mux (`a`→`y` when `ctrl`) | No analog Ron, no true bidirectional analog. Models pass/block + `y_oe`. |
 | CD4069 | CMOS4000 | planned | hex inverter | six combinational inverters | Trivial; included for completeness/decode glue. |
 | CD4511 | CMOS4000 | planned | BCD→7-seg latch/decoder/driver | latch + BCD→segment LUT, `lt_n`/`bl_n`/`le` | Active-high segment outputs; no LED current drive modeled. |
-| CD4520 | CMOS4000 | planned | dual 4-bit binary counter | two sync up-counters, clock enable, `reset` | Real part has dual clock/enable edge options; modeled with CE + rising edge. |
+| CD4520 | CMOS4000 | basic | dual 4-bit binary counter | two sync up-counters, clock enable, `reset` | Models "rising CLOCK while ENABLE high" only; falling-ENABLE mode not modeled. |
 | CD4538 | CMOS4000 | planned | dual precision monostable | **digital** one-shot: tick-count pulse width, retriggerable param | No RC; pulse length in clock ticks. See [coding_style](coding_style.md). |
 
 ## Intel-style peripherals

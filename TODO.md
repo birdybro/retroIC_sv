@@ -44,12 +44,12 @@ meaningful change.
 
 ## Stage 3 — CMOS 4000/4500 (commit 3)
 
-- [ ] `rtl/cmos4000/cd4013.sv` — dual D flip-flop
-- [ ] `rtl/cmos4000/cd4040.sv` — 12-stage ripple counter (sync model)
-- [ ] `rtl/cmos4000/cd4051.sv` — 8:1 analog-mux modeled digitally
-- [ ] `rtl/cmos4000/cd4066.sv` — quad bilateral switch modeled digitally
-- [ ] `rtl/cmos4000/cd4520.sv` — dual 4-bit binary counter
-- [ ] Self-checking testbenches for each
+- [x] `rtl/cmos4000/cd4013.sv` — dual D flip-flop
+- [x] `rtl/cmos4000/cd4040.sv` — 12-stage ripple counter (sync model)
+- [x] `rtl/cmos4000/cd4051.sv` — 8:1 analog-mux modeled digitally
+- [x] `rtl/cmos4000/cd4066.sv` — quad bilateral switch modeled digitally
+- [x] `rtl/cmos4000/cd4520.sv` — dual 4-bit binary counter
+- [x] Self-checking testbenches for each
 - [ ] Remaining CMOS: CD4020, CD4052, CD4053, CD4069, CD4511, CD4538
 
 ## Stage 4 — Intel peripherals
